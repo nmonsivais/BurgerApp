@@ -20,16 +20,22 @@ router.post("/api/burger", function (req, res) {
 //READ
 router.get("/", function (req, res) {
     orm.selectAll(function (data) {
-        res.json(data);
-        //     var hbsObject = {
-        //         cats: data
-        //     };
-        //     console.log(hbsObject);
-        //     res.render("index", hbsObject);
+        res.render("index", { burgers: data })
     });
 });
-//UPDATE
+//UPDATE(put)
+router.put("/api/burger/:id", function (req, res) {
+    const id = req.params.id;
 
+    orm.updateOne(id, function (data) {
+
+        if (data.affectedRows === 1) {
+            res.json({
+                msg: "Burger successfully updated.",
+            });
+        }
+    });
+});
 //DELETE
 
 //Export routes for server.js to use.
