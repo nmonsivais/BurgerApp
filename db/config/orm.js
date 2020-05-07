@@ -1,12 +1,15 @@
 var connection = require("./connection.js");
 var orm = {
-    selectAll: function (tableInput) {
-        var queryString = "SELECT * FROM ?";
-        connection.query(queryString, [tableInput], function (err, result) {
+    //selectAll
+    selectAll: function (cb) {
+        var queryString = "SELECT * FROM burgers";
+        connection.query(queryString, function (err, result) {
             if (err) throw err;
-            console.log(result);
+            cb(result);
         })
-    }
+    },
+    //insertOne
+    insertOne: function () { },
     // insertOne: function (tableInput) {
     //     var queryString = "INSERT INTO ?";
     //     connection.query(queryString, [tableInput], function (err, result) {
@@ -14,13 +17,9 @@ var orm = {
     //         console.log(result);
     //     })
     // }
-}
-
-
-
-
-
-
+    //updateOne
+    updateOne: function () { },
+};
 
 
 module.exports = orm;
