@@ -1,6 +1,7 @@
 var orm = require("./db/config/orm");
 var express = require("express");
 var exphbs = require("express-handlebars");
+require("dotenv").config();
 
 var PORT = process.env.PORT || 3000;
 
