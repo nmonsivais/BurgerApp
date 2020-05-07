@@ -9,14 +9,14 @@ var orm = {
         })
     },
     //insertOne
-    insertOne: function () { },
-    // insertOne: function (tableInput) {
-    //     var queryString = "INSERT INTO ?";
-    //     connection.query(queryString, [tableInput], function (err, result) {
-    //         if (err) throw err;
-    //         console.log(result);
-    //     })
-    // }
+    insertOne: function (value, cb) {
+        var queryString = "INSERT INTO burgers (burger_name) VALUES(?)";
+        connection.query(queryString, value, function (err, result) {
+            if (err) throw err;
+            cb(result);
+        });
+    },
+
     //updateOne
     updateOne: function () { },
 };
